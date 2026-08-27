@@ -2,21 +2,20 @@
 
 Contingent workforce register built around the job of a **Resource Manager**: keeping accurate oversight of contractors and contract terms, coordinating onboarding, extensions and offboarding, chasing approvals, invoices and payments through a manual process, and producing the regular reporting that makes all of it visible.
 
-It assumes a relatively low-maturity environment. Nothing is a bare status field: every state carries an "as at" date and a chase history, so the app can always answer the only question that matters when a process is manual — **how long has this been stuck, and with whom**.
+It assumes a relatively low-maturity environment. Nothing is a bare status field: every state carries an "as at" date and a chase history, so the app can always answer the only question that matters when a process is manual - **how long has this been stuck, and with whom**.
 
 Built as a Next.js 15 app with browser-local storage, plus a T-SQL schema and reporting views so the same model can be pointed at Power BI.
 
 ## The FTE model
 
 This is the bit worth reading before anything else, because everything else derives from it.
-
-- **1.0 FTE = 100 units = one 40 hour week.** A contractor on 20 hours a week is 50 units. Three days is 60 units.
+ƒ- **1.0 FTE = 100 units = one 40 hour week.** A contractor on 20 hours a week is 50 units. Three days is 60 units.
 - **The department ceiling is 100 FTE**, which is 10,000 units.
 - Of that ceiling, a portion is assumed to be **permanent establishment** (78 FTE by default). The remainder, 22 FTE or 2,200 units, is the **contractor headroom**. That is what the dashboard measures against.
 - Cost is calculated from contracted hours, not from timesheets. An hourly contract is `rate × hours`; a daily contract is `rate × (hours ÷ 8)`, where 8 is `standardWeekHours ÷ workingDaysPerWeek`. Annualised is weekly × 52.
 
 All of it is configurable in Settings. Change the standard week to 37.5 and every FTE unit, cost and flag in the app recalculates.
-
+ƒ
 ## What it does
 
 **Dashboard.** FTE used against the ceiling, annualised run rate, cost already committed to signed end dates, vendor concentration, spend by team, allocation by project, and the next actions due.
@@ -31,7 +30,7 @@ All of it is configurable in Settings. Change the standard week to 37.5 and ever
 
 **Approvals.** Every contract, variation and purchase order change waiting on a decision, ordered by how long it has been sitting with somebody rather than by date raised. Records who it is with, when it landed with them, when the decision is actually needed, and every time you have chased. A "who is holding what" table rolls it up per approver, which is what turns "approvals are slow" into "approvals with Finance take 14 days and everywhere else takes 3".
 
-**Invoices and payments.** The full lifecycle: expected, received, with an approver, approved, paid, disputed, on hold. Ageing runs from the payment due date; the approval clock runs separately from the day it went out for internal sign-off, because those are two different delays with two different owners. Flags cover invoices past the internal approval service level, payments past their due date, and expected invoices that never arrived — the last of which is the one that silently lands in the wrong accounting period and wrecks an accrual.
+**Invoices and payments.** The full lifecycle: expected, received, with an approver, approved, paid, disputed, on hold. Ageing runs from the payment due date; the approval clock runs separately from the day it went out for internal sign-off, because those are two different delays with two different owners. Flags cover invoices past the internal approval service level, payments past their due date, and expected invoices that never arrived - the last of which is the one that silently lands in the wrong accounting period and wrecks an accrual.
 
 **Contract history.** Extensions, rate changes and hours changes recorded as individual variations with effective dates and value impact, rather than an extension counter. You can see what the engagement cost before the last three extensions, and which variation moved the rate above benchmark.
 
@@ -85,7 +84,7 @@ The app ships with a demo IT department loaded: ten contractors, four vendors, f
 
 ## Data and the SQL side
 
-State lives in browser local storage under the key `rostered.v1`. That is deliberate for v0.1 — no server, no auth, no database to stand up. It also means the data lives in one browser on one machine, so **export regularly**.
+State lives in browser local storage under the key `rostered.v1`. That is deliberate for v0.1 - no server, no auth, no database to stand up. It also means the data lives in one browser on one machine, so **export regularly**.
 
 Settings gives you:
 
@@ -110,7 +109,7 @@ Note that `wf.vw_Contractor` uses `GETDATE()` for tenure, days-to-end and the fl
 Being straight about the gaps rather than letting you find them:
 
 - **No timesheets.** Cost is committed cost from contracted hours and rates. Invoice amounts are entered as received, so the app can show committed versus invoiced versus paid, but it cannot validate hours claimed against hours worked. That needs a timesheet source.
-- **No email sending.** Templates produce HTML and a mailto link. Nothing is dispatched from the app, and reminders do not email anyone — they surface in the app and export to your calendar.
+- **No email sending.** Templates produce HTML and a mailto link. Nothing is dispatched from the app, and reminders do not email anyone - they surface in the app and export to your calendar.
 - **No auth, no audit trail, no multi-user.** One browser, one person. If this goes anywhere near production the store needs to move server-side first.
 - **Approvals are tracked, not routed.** The app records where an approval sits and how long it has been there. It does not send it anywhere or enforce a delegation matrix. That is deliberate for a first version in a manual environment: recording reality is more useful than imposing a workflow nobody has agreed to yet.
 - **No integration with the HR system of record.** `WorkerId` is there as a join key for Cornerstone or whatever else holds the master record, but nothing syncs.
@@ -123,4 +122,4 @@ The app ships with a demonstration data set framed around an AUT Strategy and Tr
 
 Next.js 15 (App Router), React 19, TypeScript, plain CSS with custom properties, lucide-react. No CSS framework, no state library, no external calls at runtime.
 
-The visual system is a single token block at the top of `app/globals.css` — re-skin the whole app by changing those values.
+The visual system is a single token block at the top of `app/globals.css` - re-skin the whole app by changing those values.
