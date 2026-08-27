@@ -1,0 +1,20 @@
+Subject: Purchase order variation required - PO-89012 (Helen Mackenzie)
+
+Hi Priya,
+
+Our records show that the purchase order covering Helen Mackenzie is close to fully consumed. I am raising a variation now so that invoicing is not interrupted.
+
+Purchase order: PO-89012
+PO value: $520,000
+Invoiced to date: $401,000
+Consumed: 77%
+Remaining commitment to contract end: $101,486
+Contract end date: 01 Dec 2026
+
+Please do not submit further invoices against this PO until the variation is issued. Invoices that exceed the PO value will be rejected by accounts payable and will delay payment.
+
+I will confirm the new PO number by return once finance has processed it.
+
+Thanks,
+Gavin Buchanan
+Resource Manager, AUT

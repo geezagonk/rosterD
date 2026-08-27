@@ -1,0 +1,22 @@
+Subject: Offboarding - Wiremu Katene, last day 05 Sept 2026
+
+Hi team,
+
+Wiremu Katene (Integration Developer, Student Systems) finishes on 05 Sept 2026. Actions below, please complete on or before that date.
+
+Accounts to disable or revoke:
+
+- Entra ID
+- Integration platform
+
+Assets outstanding:
+
+- Laptop (AKL-LT-3777)
+
+Finance: final invoice must reconcile to PO PO-89740. Invoiced to date is $246,000 against a PO value of $260,000.
+
+Rehire eligibility on file: yes. Please raise anything that should change that before the record is closed.
+
+Thanks,
+Gavin Buchanan
+Resource Manager, AUT

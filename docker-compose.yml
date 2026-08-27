@@ -1,0 +1,12 @@
+services:
+  rostered:
+    build: .
+    image: rostered:latest
+    container_name: rostered
+    restart: unless-stopped
+    # Bound to loopback only. Put it behind your Cloudflare Tunnel or reverse
+    # proxy rather than exposing the port on the LAN.
+    ports:
+      - "127.0.0.1:3111:3000"
+    environment:
+      - NODE_ENV=production
