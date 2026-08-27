@@ -1,4 +1,5 @@
-RostereD
+## RosterD
+
 Contingent workforce register built around the job of a Resource Manager: keeping accurate oversight of contractors and contract terms, coordinating onboarding, extensions and offboarding, chasing approvals, invoices and payments through a manual process, and producing the regular reporting that makes all of it visible.
 
 It assumes a relatively low-maturity environment. Nothing is a bare status field: every state carries an "as at" date and a chase history, so the app can always answer the only question that matters when a process is manual — how long has this been stuck, and with whom.
